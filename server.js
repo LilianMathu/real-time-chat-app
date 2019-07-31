@@ -15,6 +15,18 @@ io.on('connection', function(socket) {
   console.log('new connection made');
 
   //show all users when logged on
+
+  // Join private rooms
+  socket.on('join-private', function(data){
+    socket.join('private');
+    console.log(data.nickname + 'joined-private');
+  });
+
+  socket.on('private-chat', function(data){
+    socket.broadcast.to('private')
+    .emit('show-message', data.message);
+  })
+
   //socket.emit is used to prevent broadcasting the event, 
   //therefore, it is passed to the socket that made the initial connection
   socket.on('get-users', function(){

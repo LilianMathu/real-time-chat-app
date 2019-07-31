@@ -17,6 +17,25 @@
     $scope.mynickname = $localStorage.nickname;
     var nickname = $scope.mynickname;
 
+    // add private rooms and group chats
+    $scope.joinPrivate = function(){
+      socket.emit('join-private', {
+        nickname: nickname
+      });
+      console.log('Private room joined');
+    }
+
+    // Group pm
+    $scope.groupPm = function(){
+      socket.emit('private-chat', {
+        message: 'Hello Everybody'
+      });
+    }
+
+    socket.on('show-message', function(data){
+      console.log(data);
+    })
+
     //register the events before the event controller to get all users. This is the client side event
     socket.emit('get-users')
 
