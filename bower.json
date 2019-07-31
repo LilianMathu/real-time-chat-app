@@ -1,0 +1,27 @@
+{
+  "name": "ngApp",
+  "description": "angular app using socket.io",
+  "main": "server.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.2",
+    "angular": "~1.5.3",
+    "angular-route": "~1.5.3",
+    "angular-sanitize": "~1.5.3",
+    "angular-cookies": "~1.5.3",
+    "ng-lodash": "~0.5.0",
+    "ngstorage": "ng-storage#~0.4.2",
+    "bootstrap": "3.3.6",
+    "font-awesome": "~4.5.0"
+  }
+}
