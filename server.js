@@ -7,7 +7,7 @@ const io = require('socket.io')(server);
 const port = 8080;
 
 app.use(express.static(path.join(__dirname, "public")));
-// app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 
 io.on('connection', function(socket) {
