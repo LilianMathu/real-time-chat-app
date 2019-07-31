@@ -61,7 +61,13 @@ io.on('connection', function(socket) {
     socket.broadcast.to(data.like)
     .emit('user-liked', data);
   })
-
+// Disconnect from socket
+  socket.on('disconnect', function(){
+    users= users.filter(function(item){
+      return item.nickname !== socket.nickname;
+    });
+    io.emit('all-users', users);
+  })
 });
 
 server.listen(port, function() {
