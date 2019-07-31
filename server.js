@@ -43,6 +43,12 @@ io.on('connection', function(socket) {
 
     //emit a new event called all-users
     io.emit('all-users', users);
+  });
+
+  //Broadcast message
+  socket.on('send-message', function(data){
+    // socket.broadcast.emit('message-received', data);
+    io.emit('message-received', data);
   })
 });
 
