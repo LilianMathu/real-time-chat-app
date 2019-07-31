@@ -14,6 +14,13 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 io.on('connection', function(socket) {
   console.log('new connection made');
 
+  //show all users when logged on
+  //socket.emit is used to prevent broadcasting the event, 
+  //therefore, it is passed to the socket that made the initial connection
+  socket.on('get-users', function(){
+    socket.emit('all-users', users);  
+  });
+
   //when new socket joins
   socket.on('join', function(data){
     console.log(data);  //nickname
