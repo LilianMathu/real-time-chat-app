@@ -41,15 +41,27 @@ io.on('connection', function(socket) {
     //push the object into the users array
     users.push(userObj);
 
+
     //emit a new event called all-users
     io.emit('all-users', users);
   });
+
 
   //Broadcast message
   socket.on('send-message', function(data){
     // socket.broadcast.emit('message-received', data);
     io.emit('message-received', data);
+  });
+
+
+  //Send a new like to a user of your choice
+  socket.on('send-like', function(data){
+    console.log(data);
+
+    socket.broadcast.to(data.like)
+    .emit('user-liked', data);
   })
+
 });
 
 server.listen(port, function() {

@@ -34,6 +34,10 @@
       $scope.messages.push(data);
     })
 
+    socket.on('user-liked', function(data){
+      console.log(data);
+      $scope.likes.push(data.from);
+    })
 
     $scope.sendMessage= function(data){
       let newMessage = {
@@ -43,6 +47,17 @@
       socket.emit('send-message', newMessage);
       $scope.message= '';
       // $scope.messages.push(newMessage);
+    }
+
+    $scope.sendLike = function(user){
+      console.log(user);
+      let id = lodash.get(user, 'socketid');
+      let likeObj = {
+        from: nickname,
+        like: id
+      };
+
+      socket.emit('send-like', likeObj);
     }
   };
 })();
