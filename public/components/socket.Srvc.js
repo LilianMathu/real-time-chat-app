@@ -11,7 +11,7 @@
   function socket($rootScope) {
     var socket = io.connect();  //opens socket.io connections between the browser and the server
     return {
-      on: on,   
+      on: on,    
       emit: emit
     }
     // Socket 'on' and 'emit' methods here
