@@ -4,7 +4,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-const port = 8080;
+const port = 4000;
 let users = [];   //stores the users that have joined the conversation
 
 app.use(express.static(path.join(__dirname, "public")));
