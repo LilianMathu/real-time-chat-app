@@ -10,9 +10,10 @@ let users = [];   //stores the users that have joined the conversation
 app.use(express.static(path.join(__dirname, "public")));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
-app.get('/join', (req, res)=>{
-  console.log(success);
+app.get('/', (req, res)=>{
+  res.status(200).json({message: "deploy successful"});
 })
+
 io.on('connection', function(socket) {
   console.log('new connection made');
 
